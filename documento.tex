@@ -1,0 +1,132 @@
+\documentclass[12pt,letterpaper]{article}
+
+% just for the example
+\usepackage{lipsum}
+% Set margins to 1.5in
+\usepackage[margin=1.5in]{geometry}
+
+% for graphics
+\usepackage{graphicx}
+
+% for crimson text
+\usepackage{crimson}
+\usepackage[T1]{fontenc}
+
+% setup parameter indentation
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% for 1.15 spacing between text
+\renewcommand{\baselinestretch}{1.15}
+
+% For defining spacing between headers
+\usepackage{titlesec}
+% Level 1
+\titleformat{\section}
+  {\normalfont\fontsize{18}{0}\bfseries}{\thesection}{1em}{}
+% Level 2
+\titleformat{\subsection}
+  {\normalfont\fontsize{14}{0}\bfseries}{\thesection}{1em}{}
+% Level 3
+\titleformat{\subsubsection}
+  {\normalfont\fontsize{12}{0}\bfseries}{\thesection}{1em}{}
+% Level 4
+\titleformat{\paragraph}
+  {\normalfont\fontsize{12}{0}\bfseries\itshape}{\theparagraph}{1em}{}
+% Level 5
+\titleformat{\subparagraph}
+  {\normalfont\fontsize{12}{0}\itshape}{\theparagraph}{1em}{}
+% Level 6
+\makeatletter
+\newcounter{subsubparagraph}[subparagraph]
+\renewcommand\thesubsubparagraph{%
+  \thesubparagraph.\@arabic\c@subsubparagraph}
+\newcommand\subsubparagraph{%
+  \@startsection{subsubparagraph}    % counter
+    {6}                              % level
+    {\parindent}                     % indent
+    {12pt} % beforeskip
+    {6pt}                           % afterskip
+    {\normalfont\fontsize{12}{0}}}
+\newcommand\l@subsubparagraph{\@dottedtocline{6}{10em}{5em}}
+\newcommand{\subsubparagraphmark}[1]{}
+\makeatother
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+\titlespacing*{\subsubsection}{0pt}{12pt}{6pt}
+\titlespacing*{\paragraph}{0pt}{12pt}{6pt}
+\titlespacing*{\subparagraph}{0pt}{12pt}{6pt}
+\titlespacing*{\subsubparagraph}{0pt}{12pt}{6pt}
+
+% Set caption to correct size and location
+\usepackage[tableposition=top, figureposition=bottom, font=footnotesize, labelfont=bf]{caption}
+
+% set page number location
+\usepackage{fancyhdr}
+\fancyhf{} % clear all header and footers
+\renewcommand{\headrulewidth}{0pt} % remove the header rule
+\rhead{\thepage}
+\pagestyle{fancy}
+
+% Overwrite Title
+\makeatletter
+\renewcommand{\maketitle}{\bgroup
+   \begin{center}
+   \textbf{{\fontsize{18pt}{20}\selectfont \@title}}\\
+   \vspace{10pt}
+   {\fontsize{12pt}{0}\selectfont \@author} 
+   \end{center}
+}
+\makeatother
+
+% Used for Tables and Figures
+\usepackage{float}
+
+% For using lists
+\usepackage{enumitem}
+
+% For full citations inline
+\usepackage{bibentry}
+\nobibliography*
+
+% Custom Quote
+\newenvironment{myquote}[1]%
+  {\list{}{\leftmargin=#1\rightmargin=#1}\item[]}%
+  {\endlist}
+  
+% Create Abstract 
+\renewenvironment{abstract}
+{\vspace*{-.5in}\fontsize{12pt}{12}\begin{myquote}{.5in}
+\noindent \par{\bfseries \abstractname.}}
+{\medskip\noindent
+\end{myquote}
+}
+
+\begin{document}
+
+% Set Title, Author, and email
+\title{Tarea 9}
+\author{Carlos Avendaño\\ carlos.avendano@galileo.edu}
+
+\maketitle
+\thispagestyle{fancy}
+
+\section*{Artículos, libros y publicaciones.}
+
+\subsection*{\bibentry{Chollet}}
+Lo he visto recomendado por múltiples practicantes de ciencia de datos en twitter así como también en el artículo de kdnuggets citado como fuente. Este libro fue escrito por uno de los desarrolladores de la biblioteca de Keras, una de las bibliotecas de aprendizaje automático más famosas de Python. Es famoso por iniciar con múltiples técnicas útiles y aplicaciones a la vida real con ejemplos que pueden ser aplicados en producción de algoritmos.
+
+\subsection*{\bibentry{yee}}
+Mi recomendación personal una combinación de simplificación de contenidos y del uso de visualizaciones para explicar elementos complejos. Es el primer artículo que me permitió entender Machine Learning y realizar lo conexión entre Data Analytics y ML.
+
+\subsection*{\bibentry{Silver}}
+Este es el articulo que presenta por primera vez a AlphaGo, utilizado muchas veces como el ejemplo de inteligencia artificial evolucionando al nivel de competir con expertos en uno de los juegos más complejos del mundo, tomo por sorpresa a la comunidad de Inteligencia artificial. 
+
+\subsection*{\bibentry{Ren}}
+Muchas aplicaciones en tiempo real de visión computarizada y de  las aplicaciones de la tecnología en la industria se deben a la publicación de este paper. El uso de Faster R-CNN influye en áreas como vehículos autónomos, vigilancia por video y reconocimiento facial.
+
+\bibliographystyle{acm-sigchi} 
+\nobibliography{bibtemp}
+
+
+\end{document}
